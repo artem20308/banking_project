@@ -1,6 +1,6 @@
+
 # Сборка и временные файлы
 build/
-build-*/
 cmake-build-*/
 CMakeCache.txt
 CMakeFiles/
@@ -19,7 +19,7 @@ Makefile
 *.dll
 *.dylib
 
-# Исполняемые файлы тестов
+# Исполняемый файл тестов
 check
 test_*
 *_tests
@@ -30,6 +30,7 @@ test_*
 *.gcov
 coverage.info
 coverage_raw.info
+coverage_filtered.info
 coverage_report/
 html/
 
@@ -39,22 +40,28 @@ html/
 *.idb
 *.pdb
 
-# Файлы IDE
+# IDE и редакторы
 .vscode/
 .idea/
 *.swp
 *.swo
 *~
 .DS_Store
+*.code-workspace
 
 # Логи и временные файлы
 *.log
 *.tmp
 *.temp
 
-# Google Test (если подключается как submodule)
-third-party/gtest/
-
 # Backup файлы
 *.bak
 *.backup
+*.orig
+
+# Скачанные зависимости (если используете FetchContent)
+build/_deps/
+
+# Google Test (если как submodule)
+third-party/gtest/
+

@@ -21,7 +21,12 @@ if(BUILD_TESTS)
   )
   FetchContent_MakeAvailable(googletest)
 
-  file(GLOB TEST_SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/tests/*.cpp")
+  # ПРАВИЛЬНЫЙ путь к тестам
+  set(TEST_SOURCES
+    ${CMAKE_CURRENT_SOURCE_DIR}/tests/test_account.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/tests/test_transaction.cpp
+  )
+  
   add_executable(check ${TEST_SOURCES})
   target_link_libraries(check banking gtest_main gmock_main)
 
