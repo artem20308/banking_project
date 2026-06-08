@@ -1,0 +1,60 @@
+# Сборка и временные файлы
+build/
+build-*/
+cmake-build-*/
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+*.cmake
+
+# Скомпилированные файлы
+*.o
+*.obj
+*.exe
+*.out
+*.app
+*.so
+*.a
+*.dll
+*.dylib
+
+# Исполняемые файлы тестов
+check
+test_*
+*_tests
+
+# Файлы покрытия кода
+*.gcda
+*.gcno
+*.gcov
+coverage.info
+coverage_raw.info
+coverage_report/
+html/
+
+# Файлы отладки
+*.dSYM/
+*.su
+*.idb
+*.pdb
+
+# Файлы IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Логи и временные файлы
+*.log
+*.tmp
+*.temp
+
+# Google Test (если подключается как submodule)
+third-party/gtest/
+
+# Backup файлы
+*.bak
+*.backup

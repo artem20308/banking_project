@@ -1,0 +1,31 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: true
+      - name: Install lcov
+        run: sudo apt-get install -y lcov
+      - name: Configure
+        run: cmake -H. -B build -DBUILD_TESTS=ON -DCOLLECT_COVERAGE=ON
+      - name: Build
+        run: cmake --build build
+      - name: Test
+        run: ./build/check
+      - name: Coverage
+        run: |
+          lcov --capture --directory build --output-file coverage_raw.info --ignore-errors mismatch,unexecuted
+          lcov --extract coverage_raw.info '*/banking/Account.cpp' '*/banking/Transaction.cpp' --output-file coverage.info
+          lcov --remove coverage.info '/usr/*' --output-file coverage.info --ignore-errors unused
+          lcov --list coverage.info
+      
+      - name: Coveralls
+        uses: coverallsapp/github-action@v2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          file: coverage.info
